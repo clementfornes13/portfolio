@@ -7,7 +7,7 @@ import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { BiRefresh } from "react-icons/bi";
-const HeroSection = React.memo(() => {
+const HeroSection = React.memo(function HeroSection() {
   const [windowState, setWindowState] = useState("normal");
 
   const handleClose = () => setWindowState("closed");
@@ -30,7 +30,7 @@ const HeroSection = React.memo(() => {
         <div className="order-2 lg:order-1 flex flex-col items-start justify-center p-2 pb-20 md:pb-10 lg:pt-10">
           <h1 className="text-3xl font-bold leading-10 text-white md:font-extrabold lg:text-[2.6rem] lg:leading-[3.5rem]">
             Hello, <br />
-            This is <span className="text-pink-500">{personalData.name}</span>{` , I'm a `}
+            I am <span className="text-pink-500">{personalData.name}</span>{` , a `}
             <span className="text-[#16f2b3]">{personalData.designation}</span>.
           </h1>
 

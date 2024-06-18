@@ -25,17 +25,15 @@ function Skills() {
           <span className="w-24 h-[2px] bg-[#1a1443]"></span>
         </div>
       </div>
-      
+
 
       <div className="w-full my-12">
         <Marquee
           gradient={false}
-          speed={80}
+          speed={50}
           pauseOnHover={false}
-          pauseOnClick={false}
-          delay={0}
-          play={true}
-          direction="left"
+          className="flex justify-center gap-3"
+
         >
           {skillsData.map((skill, id) => (
             <div className="w-36 min-w-fit h-fit flex flex-col items-center justify-center transition-all duration-500 m-3 sm:m-5 rounded-lg group relative hover:scale-[1.15] cursor-pointer"
