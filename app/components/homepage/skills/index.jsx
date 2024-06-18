@@ -25,13 +25,14 @@ function Skills() {
           <span className="w-24 h-[2px] bg-[#1a1443]"></span>
         </div>
       </div>
+      
 
       <div className="w-full my-12">
         <Marquee
           gradient={false}
           speed={80}
-          pauseOnHover={true}
-          pauseOnClick={true}
+          pauseOnHover={false}
+          pauseOnClick={false}
           delay={0}
           play={true}
           direction="left"

@@ -1,10 +1,10 @@
 // @flow strict
 
+import React from 'react';
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 
-
-function AboutSection() {
+const AboutSection = React.memo(() => {
   return (
     <div id="about" className="my-12 lg:my-16 relative">
       <div className="hidden lg:flex flex-col items-center absolute top-16 -right-8">
@@ -34,6 +34,7 @@ function AboutSection() {
       </div>
     </div>
   );
-};
+});
+
 
 export default AboutSection;
