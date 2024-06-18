@@ -1,20 +1,20 @@
 export const educations = [
   {
     id: 1,
-    title: "Bachelor Degree",
-    duration: "2020 - Present",
-    institution: "National University of Bangladesh",
+    title: "Master’s Degree in Computer Science",
+    duration: "2022 - Present",
+    institution: "CESI Engineering School, Aix-en-Provence, France",
   },
   {
     id: 2,
-    title: "Higher Secondary Certificate",
-    duration: "2018 - 2020",
-    institution: "Noakhali Islamia Kamil Madrasah",
+    title: "Intensive two-year study course preparing for the competitive entrance examinations to the French ‘Grandes Ecoles’",
+    duration: "2020 - 2022",
+    institution: "Lycée Antonin Artaud, Marseille, France",
   },
   {
     id: 3,
-    title: "Secondary School Certificate",
-    duration: "2008 - 2018",
-    institution: "Baitus Saif Islamia Madrasah",
+    title: "High School Diploma specializing in computer science - Grade B",
+    duration: "2016 - 2020",
+    institution: "Lycée Saint-Louis Sainte-Marie, Gignac-la-Nerthe, France",
   }
 ]
