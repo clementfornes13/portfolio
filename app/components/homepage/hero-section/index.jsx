@@ -7,7 +7,7 @@ import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { BiRefresh } from "react-icons/bi";
-const HeroSection = React.memo(function HeroSection() {
+const HeroSection = React.memo(() => {
   const [windowState, setWindowState] = useState("normal");
 
   const handleClose = () => setWindowState("closed");

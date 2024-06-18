@@ -7,7 +7,7 @@ import AnimationLottie from "../../helper/animation-lottie";
 import GlowCard from "../../helper/glow-card";
 import experienceAnimation from '/public/lottie/code.json';
 
-const Experience = React.memo(function Experience() {
+const Experience = React.memo(() => {
   return (
     <div id="experience" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
       <Image

@@ -2,7 +2,7 @@ import React from 'react';
 import { projectsData } from '@/utils/data/projects-data';
 import ProjectCard from './project-card';
 
-const Projects = React.memo(function Projects() {
+const Projects = React.memo(() => {
   return (
     <div id="projects" className="relative z-50 my-12 lg:my-24">
       <div className="sticky top-10">
