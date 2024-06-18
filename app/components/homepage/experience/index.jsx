@@ -78,5 +78,5 @@ const Experience = React.memo(() => {
     </div>
   );
 });
-
+Experience.displayName = 'Experience';
 export default Experience;

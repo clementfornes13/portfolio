@@ -33,5 +33,5 @@ const Projects = React.memo(() => {
     </div>
   );
 });
-
+Projects.displayName = 'Projects';
 export default Projects;

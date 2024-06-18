@@ -81,5 +81,5 @@ const Education = React.memo(() => {
     </div>
   );
 });
-
+Education.displayName = 'Education';
 export default Education;
