@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,8 +7,39 @@ import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { BiRefresh } from "react-icons/bi";
+
 const HeroSection = React.memo(() => {
   const [windowState, setWindowState] = useState("normal");
+  const [visibleLines, setVisibleLines] = useState(0);
+
+  const codeLines = [
+    `<span style="color: #268bd2;">const</span> coder = {`,
+    `  <span style="color: #b58900;">name</span>: <span style="color: #2aa198;">'Clément Fornes'</span>,`,
+    `  <span style="color: #b58900;">skills</span>: [<span style="color: #2aa198;">'HTML'</span>, <span style="color: #2aa198;">'CSS'</span>, <span style="color: #2aa198;">'JS'</span>, <span style="color: #2aa198;">'React'</span>, <span style="color: #2aa198;">'Next JS'</span>, <span style="color: #2aa198;">'Docker'</span>, <span style="color: #2aa198;">'Markdown'</span>, <span style="color: #2aa198;">'Microsoft Office'</span>, <span style="color: #2aa198;">'C#'</span>, <span style="color: #2aa198;">'C++'</span>, <span style="color: #2aa198;">'Python'</span>, <span style="color: #2aa198;">'PHP'</span>, <span style="color: #2aa198;">'Flutter'</span>, <span style="color: #2aa198;">'Dart'</span>, <span style="color: #2aa198;">'Typescript'</span>, <span style="color: #2aa198;">'Git'</span>, <span style="color: #2aa198;">'Figma'</span>, <span style="color: #2aa198;">'Canva'</span>, <span style="color: #2aa198;">'MongoDB'</span>, <span style="color: #2aa198;">'Tailwind'</span>, <span style="color: #2aa198;">'MySQL'</span>, <span style="color: #2aa198;">'PostgreSQL'</span>],`,
+    `  <span style="color: #b58900;">hardWorker</span>: <span style="color: #859900;">true</span>,`,
+    `  <span style="color: #b58900;">quickLearner</span>: <span style="color: #859900;">true</span>,`,
+    `  <span style="color: #b58900;">problemSolver</span>: <span style="color: #859900;">true</span>,`,
+    `  <span style="color: #b58900;">hireable</span>: <span style="color: #268bd2;">function</span>() {`,
+    `    <span style="color: #657b83;">return</span> (`,
+    `      <span style="color: #657b83;">this</span>.<span style="color: #b58900;">hardWorker</span> &&`,
+    `      <span style="color: #657b83;">this</span>.<span style="color: #b58900;">problemSolver</span> &&`,
+    `      <span style="color: #657b83;">this</span>.<span style="color: #b58900;">skills</span>.<span style="color: #268bd2;">length</span> >= 5`,
+    `    );`,
+    `  },`,
+    `};`
+  ];
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setVisibleLines(prevLines => prevLines + 1);
+    }, 50); // Adjust this delay for the typing speed
+
+    // Clear timeout if all lines are visible
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [visibleLines]);
+
 
   const handleClose = () => setWindowState("closed");
   const handleMinimize = () => setWindowState("minimized");
@@ -81,111 +112,11 @@ const HeroSection = React.memo(() => {
             </div>
             {windowState !== "minimized" && (
               <div className="overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 py-4 lg:py-8">
-                <code className="font-mono text-xs md:text-sm lg:text-base">
-                  <div className="blink">
-                    <span className="mr-2 text-pink-500">const</span>
-                    <span className="mr-2 text-white">coder</span>
-                    <span className="mr-2 text-pink-500">=</span>
-                    <span className="text-gray-400">{'{'}</span>
-                  </div>
-                  <div>
-                    <span className="ml-4 lg:ml-8 mr-2 text-white">name:</span>
-                    <span className="text-gray-400">'</span>
-                    <span className="text-amber-300">Clément Fornes</span>
-                    <span className="text-gray-400">',</span>
-                  </div>
-                  <div className="ml-4 lg:ml-8 mr-2">
-                    <span className="text-white">skills:</span>
-                    <span className="text-gray-400">['</span>
-                    <span className="text-amber-300">HTML</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">CSS</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">JS</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">React</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">Next JS</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">Docker</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">Markdown</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">Microsoft Office</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">C#</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">C++</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">Python</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">PHP</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">Flutter</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">Dart</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">Typescript</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">Git</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">Figma</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">Canva</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">MongoDB</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">Tailwind</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">MySQL</span>
-                    <span className="text-gray-400">', '</span>
-                    <span className="text-amber-300">PostgreSQL</span>
-                    <span className="text-gray-400">']</span>
-                  </div>
-                  <div>
-                    <span className="ml-4 lg:ml-8 mr-2 text-white">hardWorker:</span>
-                    <span className="text-orange-400">true</span>
-                    <span className="text-gray-400">,</span>
-                  </div>
-                  <div>
-                    <span className="ml-4 lg:ml-8 mr-2 text-white">quickLearner:</span>
-                    <span className="text-orange-400">true</span>
-                    <span className="text-gray-400">,</span>
-                  </div>
-                  <div>
-                    <span className="ml-4 lg:ml-8 mr-2 text-white">problemSolver:</span>
-                    <span className="text-orange-400">true</span>
-                    <span className="text-gray-400">,</span>
-                  </div>
-                  <div>
-                    <span className="ml-4 lg:ml-8 mr-2 text-green-400">hireable:</span>
-                    <span className="text-orange-400">function</span>
-                    <span className="text-gray-400">{'() {'}</span>
-                  </div>
-                  <div>
-                    <span className="ml-8 lg:ml-16 mr-2 text-orange-400">return</span>
-                    <span className="text-gray-400">{'('}</span>
-                  </div>
-                  <div>
-                    <span className="ml-12 lg:ml-24 text-cyan-400">this.</span>
-                    <span className="mr-2 text-white">hardWorker</span>
-                    <span className="text-amber-300">&amp;&amp;</span>
-                  </div>
-                  <div>
-                    <span className="ml-12 lg:ml-24 text-cyan-400">this.</span>
-                    <span className="mr-2 text-white">problemSolver</span>
-                    <span className="text-amber-300">&amp;&amp;</span>
-                  </div>
-                  <div>
-                    <span className="ml-12 lg:ml-24 text-cyan-400">this.</span>
-                    <span className="mr-2 text-white">skills.length</span>
-                    <span className="mr-2 text-amber-300">&gt;=</span>
-                    <span className="text-orange-400">5</span>
-                  </div>
-                  <div><span className="ml-8 lg:ml-16 mr-2 text-gray-400">{');'}</span></div>
-                  <div><span className="ml-4 lg:ml-8 text-gray-400">{'};'}</span></div>
-                  <div><span className="text-gray-400">{'};'}</span></div>
+                <code className="font-mono text-xs md:text-sm lg:text-base"
+                  dangerouslySetInnerHTML={{ __html: codeLines.join('\n').slice(0, visibleLines) + '<span class="blink">|</span>' }}>
+
                 </code>
+
               </div>
             )}
           </div>
