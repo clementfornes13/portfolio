@@ -1,0 +1,35 @@
+/* page.css */
+
+body {
+    margin: 0;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.dark-mode-button {
+    /* bottom right corner */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    /* styled cursor */
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode .dark-mode-button {
+    background-color: transparent;
+}
