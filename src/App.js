@@ -1,69 +1,56 @@
 // src/App.js
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 
 function App() {
-  const [clickCount, setClickCount] = useState(0);
-
-  // Fonction pour gérer les clics sur le texte "construction"
-  const handleClick = () => {
-    setClickCount((prevCount) => {
-      const newCount = prevCount + 1;
-      if (newCount === 5) {
-        startEmojiRain(); // Lance l'animation des émojis après 5 clics
-        return 0; // Réinitialise le compteur pour pouvoir cliquer à nouveau
-      }
-      clickCount === 4 && alert('🚧🚧🚧🚧🚧'); // Alerte après 4 clics
-      return newCount;
-    });
-  };
-
-  // Fonction pour lancer la pluie d'émojis
-  const startEmojiRain = () => {
-    const emojiContainer = document.createElement('div');
-    emojiContainer.classList.add('emoji-rain');
-    document.body.appendChild(emojiContainer);
-
-    for (let i = 0; i < 50; i++) {
-      const emoji = document.createElement('div');
-      emoji.textContent = '🚧'; // Emoji de construction
-      emoji.classList.add('emoji');
-      emoji.style.left = `${Math.random() * 100}vw`; // Position horizontale aléatoire
-      emoji.style.animationDuration = `${Math.random() * 2 + 3}s`; // Durée de l'animation entre 3s et 5s
-      emojiContainer.appendChild(emoji);
-
-      // Supprime l'emoji après l'animation
-      emoji.addEventListener('animationend', () => {
-        emoji.remove();
-      });
-    }
-
-    // Arrête l'animation après 5 secondes
-    setTimeout(() => {
-      emojiContainer.remove();
-    }, 5000);
-  };
-
   return (
     <div className="App">
       <header className="App-header">
         <h1>Clément FORNES</h1>
-        <h2>Welcome to My Portfolio</h2>
-        <p>
-          My website is currently under{' '}
-          <span onClick={handleClick}>
-            construction
-          </span>{' '}
-          as I work on bringing new and exciting content to showcase my projects and skills.
-        </p>
-        <p>Stay tuned for updates. In the meantime, feel free to connect with me on LinkedIn or reach out via email.</p>
-        <div className="contact-links">
-          <a href="https://www.linkedin.com/in/clement-fornes" target="_blank" rel="noopener noreferrer">
-            LinkedIn
-          </a>
-          <a href="mailto:clementfornes13@gmail.com">Email Me</a>
-        </div>
+        <p>Aspiring Software Developer | Passionate about Coding and Technology</p>
       </header>
+
+      <section className="about">
+        <h2>About Me</h2>
+        <p>
+          Hi, I'm Clément, a software developer based in Aix-en-Provence. Currently, I am honing my skills in 
+          development, focusing on C#, web development, and Python. I am eager to take on new challenges 
+          and collaborate on innovative projects.
+        </p>
+      </section>
+
+      <section className="skills">
+        <h2>Skills</h2>
+        <ul>
+          <li>C#</li>
+          <li>Python</li>
+          <li>Web Development (React, Node.js)</li>
+          <li>Docker</li>
+          <li>NoSQL Databases (MongoDB, Firebase)</li>
+          <li>Agile Methodologies (Scrum, Kanban)</li>
+        </ul>
+      </section>
+
+      <section className="projects">
+        <h2>Projects</h2>
+        <div className="project">
+          <h3>Cesiveroo</h3>
+          <p>Backend development for a delivery app focusing on route management.</p>
+        </div>
+        <div className="project">
+          <h3>EasySave</h3>
+          <p>Frontend development for a user-friendly file backup application.</p>
+        </div>
+        <div className="project">
+          <h3>Remote Real-Time DSP</h3>
+          <p>Developed a remote real-time signal processing system using USB over IP with Globalstar and ORBCOMM satellites.</p>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <p>Connect with me on <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+        <p>Contact me at <a href="mailto:example@example.com">example@example.com</a></p>
+      </footer>
     </div>
   );
 }
