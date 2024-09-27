@@ -50,7 +50,6 @@ function App() {
         <h1>Clément FORNES</h1>
         <h2>Welcome to My Portfolio</h2>
         <p>
-          Hello, I’m Clément, a passionate software developer based in Aix-en-Provence.
           My website is currently under{' '}
           <span onClick={handleClick}>
             construction
