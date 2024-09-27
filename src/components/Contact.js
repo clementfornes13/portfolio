@@ -5,6 +5,7 @@ const Contact = () => {
   return (
     <section id="contact" className="contact">
       <h2>Contact</h2>
+      <h7>Vous pouvez me contacter via le formulaire ci-dessous</h7>
       <form>
         <label htmlFor="name">Nom :</label>
         <input type="text" id="name" name="name" required />
