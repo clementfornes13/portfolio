@@ -13,6 +13,7 @@ function App() {
         startEmojiRain(); // Lance l'animation des émojis après 5 clics
         return 0; // Réinitialise le compteur pour pouvoir cliquer à nouveau
       }
+      clickCount === 4 && alert('🚧🚧🚧🚧🚧'); // Alerte après 4 clics
       return newCount;
     });
   };
