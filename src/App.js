@@ -1,22 +1,21 @@
-import logo from './logo.svg';
+// src/App.js
+import React from 'react';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <h1>Clément FORNES</h1>
+        <h2>Welcome to My Portfolio</h2>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          My website is currently under construction as I work on bringing new and exciting content to showcase my projects and skills.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>Stay tuned for updates. In the meantime, feel free to connect with me on LinkedIn or reach out via email.</p>
+        <div className="contact-links">
+          <a href="https://www.linkedin.com/in/clement-fornes/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="mailto:clementfornes13@gmail.com">Email Me</a>
+        </div>
       </header>
     </div>
   );
