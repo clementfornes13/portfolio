@@ -58,10 +58,10 @@ function App() {
         </p>
         <p>Stay tuned for updates. In the meantime, feel free to connect with me on LinkedIn or reach out via email.</p>
         <div className="contact-links">
-          <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/clement-fornes" target="_blank" rel="noopener noreferrer">
             LinkedIn
           </a>
-          <a href="mailto:example@example.com">Email Me</a>
+          <a href="mailto:clementfornes13@gmail.com">Email Me</a>
         </div>
       </header>
     </div>
