@@ -1,13 +1,9 @@
-// src/components/Footer.js
-import React from 'react';
+import React from "react";
 
-const Footer = () => {
-  return (
-    <footer className="footer">
-      <p>&copy; 2024 Clément FORNES. Tous droits réservés.</p>
-      <p>Contact : <a href="mailto:example@example.com">example@example.com</a></p>
-    </footer>
-  );
-};
+const Footer = () => (
+  <footer className="text-center text-white p-6 bg-gray-800">
+    <p className="text-gray-400">© 2025 Clement FORNES. All rights reserved.</p>
+  </footer>
+);
 
 export default Footer;
