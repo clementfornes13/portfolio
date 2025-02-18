@@ -1,11 +1,13 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Services from "./components/Services";
-import WorkExperience from "./components/WorkExperience";
-import RecentProjects from "./components/RecentProjects";
-import JuniorEngineer from "./components/JuniorEngineer";
-import Portfolio from "./components/Portfolio";
+import AboutMe from "./components/AboutMe";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import Experience from "./components/Experience";
+import Certifications from "./components/Certifications";
+import Contact from "./components/Contact";
+
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -13,11 +15,12 @@ const App = () => {
     <div className="bg-black min-h-screen">
       <Navbar />
       <Hero />
-      <Services />
-      <WorkExperience />
-      <RecentProjects />
-      <JuniorEngineer />
-      <Portfolio />
+      <AboutMe />
+      <Skills />
+      <Projects />
+      <Experience />
+      <Certifications />
+      <Contact />
       <Footer />
     </div>
   );

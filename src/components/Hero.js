@@ -93,20 +93,44 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
-          className="flex justify-center items-center text-white cursor-pointer animate-bounce mt-6"
+          className="flex justify-center items-center cursor-pointer animate-bounce mt-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
+          onClick={() => {
+            const aboutMeSection = document.getElementById("about-me");
+            if (aboutMeSection) {
+              const yOffset = aboutMeSection.getBoundingClientRect().top + window.scrollY;
+              window.scrollTo({ top: yOffset, behavior: "smooth" });
+            } else {
+              window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+            }
+          }}
         >
-          <span className="text-lg font-semibold">Scroll For More</span>
-
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <motion.span
+            className="text-lg font-semibold"
+            animate={{ y: [0, -5, 0] }} // Subtle bouncing effect
+            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+          >
+            Scroll For More
+          </motion.span>
+          <motion.svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 ml-2"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            animate={{ y: [0, 5, 0] }} // Continuous bouncing effect
+            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+          >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
+          </motion.svg>
         </motion.div>
       </motion.div>
 
+
     </div >
+
   );
 }
 
