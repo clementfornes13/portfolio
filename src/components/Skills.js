@@ -1,7 +1,7 @@
 // Skills.js - Stack technologique
 import React from "react";
 
-const skills = ["JavaScript", "React", "Node.js", "Python", "C#", "Docker", "Kubernetes", "AWS"];
+const skills = [];
 
 const Skills = () => {
   return (

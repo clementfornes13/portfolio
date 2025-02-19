@@ -2,9 +2,6 @@
 import React from "react";
 
 const certifications = [
-  { title: "AWS Certified Developer", year: "2022" },
-  { title: "Google Cloud Engineer", year: "2023" },
-  { title: "OpenAI API Expert", year: "2024" }
 ];
 
 const Certifications = () => {

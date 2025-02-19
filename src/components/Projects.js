@@ -2,9 +2,6 @@
 import React from "react";
 
 const projects = [
-    { name: "AI Chatbot", link: "#", description: "An AI-powered chatbot using OpenAI API." },
-    { name: "Portfolio Website", link: "#", description: "A personal portfolio built with React and TailwindCSS." },
-    { name: "Blockchain Payment App", link: "#", description: "A secure blockchain-based payment solution." }
 ];
 
 const Projects = () => {
