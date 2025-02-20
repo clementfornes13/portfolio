@@ -38,6 +38,7 @@ const Hero = () => {
   }, [typingIndex]);
 
   return (
+
     <div id="home" className="text-white p-10 bg-cover bg-center bg-no-repeat h-screen flex flex-col justify-between items-center" style={{
       backgroundImage: `url(${background})`, backgroundAttachment: 'fixed'
     }}>
@@ -119,7 +120,6 @@ const Hero = () => {
           </motion.div>
         ))
       }
-
       <motion.div
         className="w-12/12 flex flex-wrap justify-center items-center"
         initial={{ opacity: 0, y: 30 }}
