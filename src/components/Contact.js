@@ -1,24 +1,14 @@
-// src/components/Contact.js
-import React from 'react';
+// Contact.js - Section de contact
+import React from "react";
 
 const Contact = () => {
-  return (
-    <section id="contact" className="contact">
-      <h2>Contact</h2>
-      <form>
-        <label htmlFor="name">Nom :</label>
-        <input type="text" id="name" name="name" required />
-
-        <label htmlFor="email">Email :</label>
-        <input type="email" id="email" name="mail" required />
-
-        <label htmlFor="message">Message :</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-
-        <button type="submit">Envoyer</button>
-      </form>
-    </section>
-  );
+    return (
+        <div id="contact" className="p-10 text-white">
+            <h1 className="text-4xl font-bold">Contact</h1>
+            <ul className="mt-4 space-y-4">
+            </ul>
+        </div>
+    );
 };
 
 export default Contact;

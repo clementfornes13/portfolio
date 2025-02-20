@@ -1,21 +1,18 @@
-// src/components/Skills.js
-import React from 'react';
+// Skills.js - Stack technologique
+import React from "react";
+
+const skills = [];
 
 const Skills = () => {
   return (
-    <section id="skills" className="skills">
-      <h2>Compétences</h2>
-      <ul>
-        <li>C#</li>
-        <li>Python</li>
-        <li>Dart</li>
-        <li>React</li>
-        <li>Node.js</li>
-        <li>Docker</li>
-        <li>MongoDB</li>
-        <li>Agile (Scrum, Kanban)</li>
+    <div className="p-10 text-white">
+      <h1 className="text-4xl font-bold">Skills & Tech Stack</h1>
+      <ul className="mt-4 grid grid-cols-2 gap-4">
+        {skills.map((skill, index) => (
+          <li key={index} className="text-lg">⚡ {skill}</li>
+        ))}
       </ul>
-    </section>
+    </div>
   );
 };
 
