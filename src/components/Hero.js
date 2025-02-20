@@ -1,8 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import background from "../images/background.jpg";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import FancyText from "./FancyText";
-import useEasterEgg from "./useEasterEgg";
+import { RainbowContext } from "../RainbowContext";
+
 const emojis = ["🎉", "🔥", "💻", "🚀"];
 const nameText = "Junior Software Engineer";
 
@@ -11,9 +12,7 @@ const Hero = () => {
   const [emojiActivated, setEmojiActivated] = useState(false);
   const [typedText, setTypedText] = useState("");
   const [typingIndex, setTypingIndex] = useState(0);
-  const [userInput, setUserInput] = useState("");
-  const [showFunFacts, setShowFunFacts] = useState(false);
-  const [rainbowMode, setRainbowMode] = useState(false);
+  const { showFunFacts, rainbowMode } = useContext(RainbowContext);
 
   const handleEmojiRain = () => {
     if (!emojiActivated) {
@@ -37,11 +36,6 @@ const Hero = () => {
       return () => clearTimeout(timeout);
     }
   }, [typingIndex]);
-
-  useEasterEgg({
-    clement: () => setShowFunFacts((prev) => !prev),
-    rainbow: () => setRainbowMode((prev) => !prev),
-  });
 
   return (
     <div id="home" className="text-white p-10 bg-cover bg-center bg-no-repeat h-screen flex flex-col justify-between items-center" style={{

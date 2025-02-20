@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [textColor, setTextColor] = useState("text-white");
-  const [backgroundColor, setBackgroundColor] = useState("bg-black bg-opacity-50 backdrop-blur-sm");
+  const [backgroundColor, setBackgroundColor] = useState("bg-black bg-opacity-50");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,10 +12,10 @@ const Navbar = () => {
         const rect = aboutMeSection.getBoundingClientRect();
         if (rect.top <= 50 && rect.bottom >= 50) {
           setTextColor("text-black");
-          setBackgroundColor("bg-white bg-opacity-50 backdrop-blur-sm");
+          setBackgroundColor("bg-white bg-opacity-50");
         } else {
           setTextColor("text-white");
-          setBackgroundColor("bg-black bg-opacity-50 backdrop-blur-sm");
+          setBackgroundColor("bg-black bg-opacity-50");
         }
       }
     };
@@ -36,15 +36,21 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 w-full flex justify-between items-center p-5 z-50 transition-colors duration-300 lg:text-lg md:text-base text-sm ${backgroundColor} ${textColor}`}>
+    <nav className={`flex justify-center items-center p-5 z-50 lg:text-lg md:text-base text-sm ${backgroundColor} ${textColor} fixed top-0 left-0 right-0 backdrop-blur-sm`}>
       <motion.div
-        className="font-bold cursor-pointer lg:text-xl md:text-lg text-base"
+        className="font-bold cursor-pointer lg:text-xl md:text-lg text-base mr-auto"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
         whileHover={{ rotate: 360 }}
         transition={{ duration: 1, ease: "easeInOut" }}
+        onClick={() => {
+          window.location.reload();
+        }
+        }
       >
         CF
       </motion.div>
-      <ul className="flex space-x-6 lg:text-lg md:text-base text-sm lg:flex-row md:flex-row flex-col">
+      <ul className="lg:text-lg md:text-base text-sm lg:flex-row md:flex-row flex-col flex gap-5 justify-center items-center flex-wrap w-full text-center">
         {[
           { name: "Home", id: "home" },
           { name: "About Me", id: "about-me" },
@@ -63,8 +69,7 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
-      <div className="font-bold lg:text-xl md:text-lg text-base">13</div>
-    </nav>
+    </nav >
   );
 };
 
