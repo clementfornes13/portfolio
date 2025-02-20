@@ -1,13 +1,22 @@
-// AboutMe.js - Présentation de ton parcours avec un design similaire à l'image
+// AboutMe.js - About Me Section for Portfolio
 import React from "react";
 import { motion } from "framer-motion";
 import profileImage from "../images/profile.png";
+
+const handleDownloadResume = (file) => {
+  const link = document.createElement("a");
+  link.href
+    = process.env.PUBLIC_URL + file;
+  link.download = "Clement_Fornes_Resume.pdf";
+  link.click();
+};
+
 
 const AboutMe = () => {
   return (
     <div id="about-me" className="">
       <div className="w-full h-1 bg-gradient-to-r from-yellow-400 via-green-400 to-blue-500"></div>
-      < div className="flex flex-col md:flex-row items-center justify-center p-10 text-black bg-white" >
+      <div className="flex flex-col md:flex-row items-center justify-center p-10 text-black bg-white">
 
         <motion.img
           src={profileImage}
@@ -16,7 +25,6 @@ const AboutMe = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
-
         />
 
         <div className="md:w-1/3 text-left md:ml-10">
@@ -36,14 +44,14 @@ const AboutMe = () => {
           </h2>
 
           <p className="text-gray-600 leading-relaxed lg:text-base md:text-sm text-xs lg:mt-4 md:mt-2 mt-0">
-            Hey there! I'm a software engineer who loves building fast, efficient, and scalable applications.
-            I specialize in full-stack development and solving complex problems with clean, reliable code.
+            Hey there! I'm a software engineer who loves building <strong>fast, efficient, and scalable applications. </strong>
+            I specialize in <strong>full-stack development</strong> and solving complex problems with <strong>clean, reliable code. </strong>
             Ever since I was a kid, I’ve been hooked on creating things with computers, and that passion has only grown stronger.
           </p>
 
           <p className="text-gray-600 leading-relaxed lg:text-base md:text-sm text-xs lg:mt-4 md:mt-2 mt-0">
-            When I’m not coding, you’ll probably find me at the gym, exploring new ideas,
-            or picking up new skills to stay ahead in this ever-changing industry.
+            When I’m not coding, you’ll probably find me <strong>at the gym, exploring new ideas, </strong>
+            or picking up <strong>new skills</strong> to stay ahead in this ever-changing industry.
           </p>
 
           {/* Buttons */}
@@ -52,6 +60,7 @@ const AboutMe = () => {
               className="bg-blue-500 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-blue-600 transition"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => handleDownloadResume("/resume.pdf")}
             >
               Download Resume
             </motion.button>
@@ -60,14 +69,14 @@ const AboutMe = () => {
               className="bg-gray-200 text-black px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-300 transition"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => window.location.href = "#contact"}
             >
               Contact Me
             </motion.button>
-
           </div>
         </div>
-      </div >
-    </div >
+      </div>
+    </div>
   );
 };
 
