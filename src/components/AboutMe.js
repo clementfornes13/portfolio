@@ -26,7 +26,7 @@ const handleScrollToContact = (id) => {
 
 const AboutMe = () => {
 
-  const { showFunFacts, rainbowMode } = useContext(RainbowContext);
+  const { rainbowMode } = useContext(RainbowContext);
 
   return (
     <div id="about-me" className="">

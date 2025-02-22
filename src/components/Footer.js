@@ -36,7 +36,7 @@ const Footer = () => {
           <FaLinkedin size={24} />
         </motion.a>
         <motion.a
-          href="https://twitter.com/clementfornes"
+          href="mailto:clementfornes13@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.1 }}

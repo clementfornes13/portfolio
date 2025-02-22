@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 
-
-const emojis = ["🎉", "🔥", "💻", "🚀"];
-
-const useEasterEgg = (triggerWords, onActivate) => {
+const useEasterEgg = (triggerWords) => {
     const [userInput, setUserInput] = useState("");
 
     useEffect(() => {

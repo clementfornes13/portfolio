@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { FaHome, FaUser, FaCode, FaProjectDiagram, FaBriefcase, FaCertificate, FaEnvelope } from "react-icons/fa"; // Import icons
 
 const Navbar = () => {
   const [textColor, setTextColor] = useState("text-white");
@@ -30,46 +31,51 @@ const Navbar = () => {
     if (section) {
       const yOffset = section.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({ top: yOffset, behavior: "smooth" });
-    } else {
-      window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
     }
   };
 
   return (
-    <nav className={`flex justify-center items-center p-5 z-50 lg:text-lg md:text-base text-sm ${backgroundColor} ${textColor} fixed top-0 left-0 right-0 backdrop-blur-sm`}>
+    <nav className={`hidden md:flex fixed top-0 left-0 right-0 z-50 p-5 backdrop-blur-sm ${backgroundColor} ${textColor}`}>
+      {/* Logo */}
       <motion.div
         className="font-bold cursor-pointer lg:text-xl md:text-lg text-base mr-auto"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         whileHover={{ rotate: 360 }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        onClick={() => {
-          window.location.reload();
-        }
-        }
+        onClick={() => window.location.reload()}
       >
         CF
       </motion.div>
-      <ul className="lg:text-lg md:text-base text-sm lg:flex-row md:flex-row flex-col flex gap-5 justify-center items-center flex-wrap w-full text-center">
-        {[
-          { name: "Home", id: "home" },
-          { name: "About Me", id: "about-me" },
-          { name: "Skills & Tech Stack", id: "skills" },
-          { name: "Projects", id: "projects" },
-          { name: "Experience", id: "experience" },
-          { name: "Certifications", id: "certifications" },
-          { name: "Contact", id: "contact" },
-        ].map((item) => (
-          <li
-            key={item.id}
-            onClick={() => scrollToSection(item.id)}
-            className="hover:text-yellow-500 cursor-pointer transition duration-300"
-          >
-            {item.name}
-          </li>
-        ))}
-      </ul>
-    </nav >
+
+      {/* Navbar Links with Icons */}
+      <motion.div
+        className="lg:text-lg md:text-base text-sm flex justify-center items-center w-full"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.5, ease: "easeInOut" }}
+      >
+        <ul className="flex gap-6">
+          {[
+            { name: "Home", id: "home", icon: <FaHome /> },
+            { name: "About Me", id: "about-me", icon: <FaUser /> },
+            { name: "Skills", id: "skills", icon: <FaCode /> },
+            { name: "Projects", id: "projects", icon: <FaProjectDiagram /> },
+            { name: "Experience", id: "experience", icon: <FaBriefcase /> },
+            { name: "Certifications", id: "certifications", icon: <FaCertificate /> },
+            { name: "Contact", id: "contact", icon: <FaEnvelope /> },
+          ].map((item) => (
+            <li
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className="flex items-center gap-2 hover:text-yellow-500 cursor-pointer transition duration-300"
+            >
+              {item.icon} {item.name}
+            </li>
+          ))}
+        </ul>
+      </motion.div>
+    </nav>
   );
 };
 
