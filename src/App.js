@@ -15,7 +15,6 @@ const App = () => {
   return (
     <RainbowProvider>
       <div className="bg-black min-h-screen">
-        <Navbar />
         <Hero />
         <AboutMe />
         <Skills />
