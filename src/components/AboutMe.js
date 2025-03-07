@@ -1,5 +1,5 @@
 // AboutMe.js - About Me Section for Portfolio
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import profileImage from "../images/profile.png";
 import FancyText from "./FancyText";

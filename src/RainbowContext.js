@@ -8,6 +8,7 @@ const RainbowProvider = ({ children }) => {
     const [rainbowMode, setRainbowMode] = useState(false);
     const [showFunFacts, setShowFunFacts] = useState(false);
 
+
     useEasterEgg({
         clement: () => setShowFunFacts((prev) => !prev),
         rainbow: () => setRainbowMode((prev) => !prev),
