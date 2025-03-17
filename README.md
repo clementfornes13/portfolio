@@ -20,7 +20,7 @@
 ---
 
 ## **🎨 UI Preview**
-🚀 **Live Demo:** [Visit Portfolio](dev.clementfornes.com)
+🚀 **Live Demo:** [Visit Portfolio](https://dev.clementfornes.com)
 
 ---
 
