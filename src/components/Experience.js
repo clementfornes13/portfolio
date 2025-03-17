@@ -36,8 +36,11 @@ const timelineItems = [
 const Experience = () => {
   const { rainbowMode } = useContext(RainbowContext);
   const { scrollYProgress } = useScroll();
-  // Apply a parallax effect to all timeline items
-  const parallax = useTransform(scrollYProgress, [0, 1], [0, -150]);
+
+  // Create multiple parallax layers with different speeds
+  const parallaxFast = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const parallaxMedium = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const parallaxSlow = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   return (
     <div
@@ -47,10 +50,18 @@ const Experience = () => {
     >
       {/* Dark overlay for legibility */}
       <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+
+      {/* Parallax background layers */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-30"
+        style={{ y: parallaxSlow }}
+      />
+
       <div className="container mx-auto px-10 relative">
         {/* Section Title */}
         <motion.h1
           className="text-4xl font-extrabold text-center mb-12 text-white"
+          style={{ y: parallaxMedium }}
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -82,9 +93,8 @@ const Experience = () => {
               return (
                 <motion.div
                   key={index}
-                  className={`relative flex items-center ${isLeft ? "md:flex-row-reverse" : "md:flex-row"
-                    }`}
-                  style={{ y: parallax }}
+                  className={`relative flex items-center ${isLeft ? "md:flex-row-reverse" : "md:flex-row"}`}
+                  style={{ y: parallaxFast }}
                   initial={{ opacity: 0, x: isLeft ? -50 : 50, rotateY: isLeft ? 10 : -10 }}
                   whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}

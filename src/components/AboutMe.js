@@ -30,7 +30,8 @@ const AboutMe = () => {
 
   return (
     <div id="about-me" className="">
-      <div className="w-full h-1 bg-gradient-to-r from-yellow-400 via-green-400 to-blue-500"></div>
+      <div className="bg-gradient-to-r from-yellow-400 via-green-400 to-blue-500 w-full h-1"></div>
+
       <div className="flex flex-col md:flex-row items-center justify-center p-10 text-black bg-white">
 
         <motion.img
