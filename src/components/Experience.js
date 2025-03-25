@@ -49,11 +49,11 @@ const Experience = () => {
       style={{ backgroundImage: `url(${background})`, perspective: "1000px" }}
     >
       {/* Dark overlay for legibility */}
-      <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+      <div className="bg-black bg-opacity-60"></div>
 
       {/* Parallax background layers */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-30"
+        className="bg-gradient-to-b from-transparent to-black opacity-30"
         style={{ y: parallaxSlow }}
       />
 
@@ -84,7 +84,7 @@ const Experience = () => {
         {/* Timeline Container */}
         <div className="">
           {/* Central Vertical Line */}
-          <div className="absolute inset-y-0 left-1/2 w-1 bg-gray-700 transform -translate-x-1/2"></div>
+          <div className="bg-gray-700 transform -translate-x-1/2"></div>
 
           <div className="space-y-16">
             {timelineItems.map((item, index) => {

@@ -1,5 +1,6 @@
 'use client';
 import React, { useContext } from "react";
+
 import RainbowProvider, { RainbowContext } from "./RainbowContext";
 import Hero from "./components/Hero";
 import AboutMe from "./components/AboutMe";
