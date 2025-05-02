@@ -23,8 +23,8 @@ import { TbBrandCSharp } from "react-icons/tb";
 // Données de vos projets
 const projects = [
     {
-        name: "CESI",
-        name2: "VEROO",
+        name: "Cesi",
+        name2: "veroo",
         description: "A full-stack food delivery platform featuring real-time order tracking, restaurant management, and user authentication. Build with React Native, Express.js, SQL Server, MongoDB, and Docker.",
         link: "https://github.com/clementfornes13",
         color: "from-black to-black",
@@ -39,10 +39,12 @@ const projects = [
         ],
     },
     {
-        name: "EasySave",
+        name: "Easy",
+        name2: "Save",
         description: "A backup software for Windows, macOS, and Linux. Built with C# and .NET.",
         link: "https://github.com/clementfornes13",
-        color: "from-blue-500 to-indigo-500",
+        color: "from-black to-black",
+        color2: "from-pink-500 to-purple-500",
         details: "A backup software for Windows, macOS, and Linux. Built with C# and .NET.",
         tech: [
             { name: "C#", icon: TbBrandCSharp },
@@ -52,10 +54,12 @@ const projects = [
         ],
     },
     {
-        name: "GateGuard",
+        name: "Gate",
+        name2: "Guard",
         description: "A secure access control system for parking facilities, featuring real-time identity verification and automated gate management. Built with React Native and Firebase.",
         link: "https://www.example.com",
-        color: "from-green-500 to-teal-500",
+        color: "from-black to-black",
+        color2: "from-green-500 to-blue-500",
         details: "A secure access control system for parking facilities, featuring real-time identity verification and automated gate management. Built with React Native and Firebase.",
         tech: [
             { name: "React Native", icon: SiReact },
@@ -179,8 +183,8 @@ const Projects = () => {
                             className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            whileHover={{ y: -5 }}
+                            transition={{ duration: 0.1, delay: index * 0.1 }}
+                            whileHover={{ scale: 1.02 }}
                             onClick={() => openModal(project)}
                         >
                             <div className="p-6 space-y-4">
@@ -202,8 +206,9 @@ const Projects = () => {
                                     ))}
                                 </div>
                                 <button
-                                    className="w-full px-4 py-2 bg-blue-500 text-white rounded-full shadow hover:bg-blue-600 transition-all hover:shadow-lg"
-                                >
+                                    // Button on bottom
+                                    className="absolute px-4 py-2 bg-blue-500 text-white rounded-full shadow hover:bg-blue-600 transition-all hover:shadow-l bottom-4 left-1/2 transform -translate-x-1/2"
+>
                                     View Details
                                 </button>
                             </div>
