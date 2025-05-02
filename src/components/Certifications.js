@@ -4,9 +4,10 @@ import certificatPDF from "../images/certificat.pdf";
 
 const certifications = [
   {
-    title: "TOEIC",
-    year: "2019",
-    description: "Score: 905/990",
+    // nice presentation of the logo with the title and description and  a button to see the certification
+    title: "TOEIC Listening and Reading",
+    year: "2025",
+    result: "905/990",
     link: "external",
     pdf: certificatPDF,
   },
@@ -27,29 +28,41 @@ const Certifications = () => {
           transition={{ duration: 0.8 }}
           className="text-5xl md:text-6xl font-extrabold text-center mb-16"
         >
-          Mes Certifications
+          My Certifications
         </motion.h1>
-
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
           {certifications.map((cert, index) => (
-            <motion.div
+            // https://upload.wikimedia.org/wikipedia/commons/3/39/ETS_Logo.svg
+            // While hover, the text "Click to view the certification" should be displayed and the image should be blurred
+                        <motion.div
               key={index}
-              className="bg-gray-800 bg-opacity-70 backdrop-blur-md rounded-2xl p-8 shadow-2xl cursor-pointer"
-              whileHover={{ scale: 1.03 }}
-              transition={{ type: "spring", stiffness: 200 }}
+              className="bg-gray-800 rounded-lg shadow-lg p-6 cursor-pointer hover:bg-gray-700 transition duration-300"
               onClick={() => setSelected(cert)}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <h2 className="text-2xl font-semibold mb-2">{cert.title}</h2>
-              <p className="text-sm text-gray-400 mb-1">Année: {cert.year}</p>
-              <p className="mb-4 leading-relaxed text-gray-200">{cert.description}</p>
-              <div className="inline-block mt-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-medium shadow-lg hover:opacity-90 transition-opacity">
-                Voir le certificat →
+              <div className="flex items-center mb-4">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/3/39/ETS_Logo.svg"
+                  alt={cert.title}
+                  className="w-16 h-16 mr-4"
+                />
+                <div>
+                  <h2 className="text-xl font-bold">{cert.title}</h2>
+                  <p className="text-gray-400">{cert.year}</p>
+                  <p className="text-gray-400">{cert.result}</p>
+                </div>
               </div>
+              <p className="text-gray-300">
+                Click to view the certification
+              </p>
             </motion.div>
           ))}
         </motion.div>
