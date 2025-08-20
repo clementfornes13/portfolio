@@ -95,7 +95,6 @@ const Skills = () => {
               transition={{ duration: 0.3, ease: "easeInOut" }}
               style={{
                 background: `linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.3))`,
-                backdropFilter: "blur(10px)"
               }}
             >
               {skill.icon}
