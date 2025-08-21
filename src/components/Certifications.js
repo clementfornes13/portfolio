@@ -4,14 +4,12 @@ import certificatPDF from "../images/certificat.pdf";
 
 const certifications = [
   {
-    // nice presentation of the logo with the title and description and  a button to see the certification
     title: "TOEIC Listening and Reading",
     year: "2025",
     result: "905/990",
     link: "external",
     pdf: certificatPDF,
   },
-  // Ajoutez d'autres certifications ici
 ];
 
 const Certifications = () => {
