@@ -1,25 +1,30 @@
 import { useState, useEffect } from "react";
 
 const useEasterEgg = (triggerWords) => {
-    const [userInput, setUserInput] = useState("");
+  const [userInput, setUserInput] = useState("");
 
-    useEffect(() => {
-        const handleKeyDown = (event) => {
-            setUserInput((prev) => prev + event.key);
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      // Skip modifier/special keys for word matching
+      if (event.key.length > 1 && !event.key.match(/^[0-9]$/)) return;
 
-            for (const word in triggerWords) {
-                if ((userInput + event.key).toLowerCase().includes(word)) {
-                    triggerWords[word]();  // Call the corresponding function
-                    setUserInput("");  // Reset input after activation
-                }
-            }
-        };
+      const newInput = (userInput + event.key).slice(-30);
+      setUserInput(newInput);
 
-        window.addEventListener("keydown", handleKeyDown);
-        return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [userInput]);
+      for (const word in triggerWords) {
+        if (newInput.toLowerCase().includes(word.toLowerCase())) {
+          triggerWords[word]();
+          setUserInput("");
+          break;
+        }
+      }
+    };
 
-    return { userInput };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [userInput, triggerWords]);
+
+  return { userInput };
 };
 
 export default useEasterEgg;
