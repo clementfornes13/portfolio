@@ -79,9 +79,8 @@ const Experience = () => {
               return (
                 <motion.div
                   key={i}
-                  className={`relative flex items-start gap-8 ${
-                    isLeft ? "md:flex-row" : "md:flex-row-reverse"
-                  }`}
+                  className={`relative flex items-start gap-8 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"
+                    }`}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
@@ -134,6 +133,50 @@ const Experience = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal for TOEIC */}
+      <AnimatePresence>
+        {selectedCert && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm"
+            onClick={closeModal}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="bg-white rounded-2xl shadow-2xl w-[90%] md:w-3/4 lg:w-1/2 h-[80%] relative overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <button
+                onClick={closeModal}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl"
+              >
+                &times;
+              </button>
+              <iframe
+                src={selectedCert.pdf}
+                title={selectedCert.title}
+                className="w-full h-full"
+                frameBorder="0"
+              />
+              <div className="absolute bottom-4 left-0 w-full flex justify-center">
+                <a
+                  href={selectedCert.pdf}
+                  download
+                  className="bg-blue-500 text-white font-semibold px-4 py-2 rounded-full shadow hover:bg-blue-600 transition"
+                >
+                  📄 Download PDF
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
