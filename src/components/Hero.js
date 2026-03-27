@@ -1,5 +1,4 @@
 import { motion, AnimatePresence } from "framer-motion";
-import background from "../images/background.jpg";
 import React, { useState, useEffect, useContext } from "react";
 import FancyText from "./FancyText";
 import { RainbowContext } from "../RainbowContext";
@@ -39,9 +38,7 @@ const Hero = () => {
 
   return (
 
-    <div id="home" className="text-white p-10 bg-cover bg-center bg-no-repeat h-screen flex flex-col justify-between items-center" style={{
-      backgroundImage: `url(${background})`, backgroundAttachment: 'fixed'
-    }}>
+    <div id="home" className="text-white p-10 h-screen flex flex-col justify-between items-center" >
       <div className="w-10/12 flex flex-row justify-between lg:mt-10 md:mt-8 mt-6">
         <div>
           <motion.h1
@@ -373,6 +370,7 @@ const Hero = () => {
         </motion.div>
 
       </motion.div>
+      
     </div>
 
   );

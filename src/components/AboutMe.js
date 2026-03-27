@@ -9,7 +9,7 @@ const handleDownloadResume = (file) => {
   const link = document.createElement("a");
   link.href
     = process.env.PUBLIC_URL + file;
-  link.download = "Clement_Fornes_Resume.pdf";
+  link.download = file.split("/").pop() || "Resume.pdf";
   link.click();
 };
 
@@ -32,7 +32,7 @@ const AboutMe = () => {
     <div id="about-me" className="">
       <div className="bg-gradient-to-r from-yellow-400 via-green-400 to-blue-500 w-full h-1"></div>
 
-      <div className="flex flex-col md:flex-row items-center justify-center p-10 text-black bg-white">
+      <div className="flex flex-col md:flex-row items-center justify-center p-10 text-black bg-white/70">
 
         <motion.img
           src={profileImage}
@@ -106,9 +106,9 @@ const AboutMe = () => {
           ) : (
             <React.Fragment>
               <p className="text-gray-600 leading-relaxed lg:text-base md:text-sm text-xs lg:mt-4 md:mt-2 mt-0">
-                Hey there! I'm a software engineer who loves building <strong>fast, efficient, and scalable applications. </strong>
-                I specialize in <strong>full-stack development</strong> and solving complex problems with <strong>clean, reliable code. </strong>
-                Ever since I was a kid, I've been hooked on creating things with computers, and that passion has only grown stronger.
+                Hey there! I'm a software engineer who loves building <strong>fast, efficient, and scalable applications</strong>.  
+                I specialize in <strong>full-stack development</strong> and solving complex problems with <strong>clean, reliable code</strong>.  
+                I'm currently <strong>open to full-time opportunities</strong> and available for <strong>freelance work</strong>
               </p>
               <p className="text-gray-600 leading-relaxed lg:text-base md:text-sm text-xs lg:mt-4 md:mt-2 mt-0">
                 When I’m not coding, you’ll probably find me <strong>at the gym, exploring new ideas, </strong>

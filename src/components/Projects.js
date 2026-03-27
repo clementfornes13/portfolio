@@ -172,8 +172,9 @@ const Projects = () => {
                         )}
                     </h1>
                     <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                        A collection of my recent work showcasing my skills and experience in software development.
-                    </p>
+  A collection of my recent work as a fullstack developer, combining strong technical skills with real-world results.  
+  Open to new freelance collaborations and full-time roles.
+</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -216,6 +217,8 @@ const Projects = () => {
                         </motion.div>
                     ))}
                 </div>
+                <div className="mt-12 text-center">
+</div>
             </motion.div>
             <ProjectModal project={selectedProject} onClose={closeModal} />
         </div>

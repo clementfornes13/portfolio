@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { motion } from "framer-motion";
-import { FaCode, FaReact, FaServer, FaMobileAlt, FaTools, FaCloud } from "react-icons/fa";
-import skillsBackground from "../images/background.jpg";
+import {
+  FaCode, FaReact, FaServer, FaMobileAlt, FaTools, FaCloud,
+} from "react-icons/fa";
 import { RainbowContext } from "../RainbowContext";
 import FancyText from "./FancyText";
 
@@ -47,6 +48,13 @@ const skills = [
     icon: <FaTools className="text-gray-300 text-5xl mb-4" />,
     highlight: "Tools & CI/CD",
     color: "from-gray-500 to-gray-700"
+  },
+  {
+    title: "Freelance Services",
+    description: "Available for short-term or long-term freelance projects. Let's build something great together.",
+    icon: <FaTools className="text-pink-400 text-5xl mb-4" />,
+    highlight: "Freelance",
+    color: "from-pink-500 to-red-500"
   }
 ];
 
@@ -54,19 +62,15 @@ const Skills = () => {
   const { rainbowMode } = useContext(RainbowContext);
 
   return (
-    <div
-      id="skills"
-      className="py-20 flex flex-col items-center justify-center bg-cover bg-center relative"
-      style={{ backgroundImage: `url(${skillsBackground})` }}
-    >
-      <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div id="skills" className="relative z-10 py-20 bg-white/5 backdrop-blur-sm">
+
       <motion.div
-        className="container mx-auto px-10 relative"
+        className="container max-w-7xl mx-auto px-6 md:px-10 relative"
         initial={{ opacity: 0, y: 30, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 1 }}
       >
-        <h1 className="text-4xl font-extrabold text-center mb-12">
+        <h1 className="text-4xl font-extrabold text-center mb-6">
           {rainbowMode ? (
             <FancyText
               gradient={{ from: "#F858E0", to: "#77156C" }}
@@ -81,21 +85,23 @@ const Skills = () => {
             </span>
           )}
         </h1>
+
+        <p className="text-center text-gray-300 mt-2 max-w-2xl mx-auto">
+          I work across the stack to build fast, scalable, and user-centric solutions. Whether you're hiring or looking for a freelance partner, here's what I bring to the table.
+        </p>
+
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
           {skills.map((skill, index) => (
             <motion.div
               key={index}
-              className="relative flex flex-col items-center p-6 bg-opacity-90 rounded-xl shadow-xl border border-gray-700 text-center"
-              whileHover={{ scale: 1.08 }}
+              className="relative flex flex-col items-center p-6 rounded-xl shadow-xl border border-gray-700 text-center bg-white/10"
+              whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              style={{
-                background: `linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.3))`,
-              }}
             >
               {skill.icon}
 
@@ -116,7 +122,7 @@ const Skills = () => {
               )}
 
               <p className="mt-3 text-gray-300">{skill.description}</p>
-              <div className={`absolute inset-0 rounded-xl bg-gradient-to-br ${skill.color} opacity-20 blur-2xl`}></div>
+              <div className={`absolute inset-0 rounded-xl bg-gradient-to-br ${skill.color} opacity-20 blur-2xl pointer-events-none`}></div>
             </motion.div>
           ))}
         </motion.div>
