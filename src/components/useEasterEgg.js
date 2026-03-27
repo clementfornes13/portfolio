@@ -1,30 +1,30 @@
 import { useState, useEffect, useRef } from "react";
 
 const useEasterEgg = (triggerWords) => {
-    const [userInput, setUserInput] = useState("");
-    const inputRef = useRef("");
+  const [userInput, setUserInput] = useState("");
 
-    useEffect(() => {
-        const handleKeyDown = (event) => {
-            inputRef.current += event.key;
-            inputRef.current = inputRef.current.slice(-30); // keep only the last 30 chars
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      // Skip modifier/special keys for word matching
+      if (event.key.length > 1 && !event.key.match(/^[0-9]$/)) return;
 
-            for (const word in triggerWords) {
-                if (inputRef.current.toLowerCase().includes(word.toLowerCase())) {
-                    triggerWords[word]();
-                    inputRef.current = ""; // reset after trigger
-                    break;
-                }
-            }
+      const newInput = (userInput + event.key).slice(-30);
+      setUserInput(newInput);
 
-            setUserInput(inputRef.current);
-        };
+      for (const word in triggerWords) {
+        if (newInput.toLowerCase().includes(word.toLowerCase())) {
+          triggerWords[word]();
+          setUserInput("");
+          break;
+        }
+      }
+    };
 
-        window.addEventListener("keydown", handleKeyDown);
-        return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [triggerWords]);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [userInput, triggerWords]);
 
-    return { userInput };
+  return { userInput };
 };
 
 export default useEasterEgg;

@@ -1,229 +1,240 @@
-// Projects.js
 import React, { useState, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { RainbowContext } from "../RainbowContext";
+import { ThemeContext } from "../ThemeContext";
 import FancyText from "./FancyText";
 import {
-    SiReact,
-    SiMongodb,
-    SiExpress,
-    SiDotnet,
-    SiSqlite,
-    SiFirebase,
-    SiRedux,
-    SiTypescript,
-    SiDocker
+  SiReact, SiMongodb, SiExpress, SiDotnet, SiSqlite,
+  SiFirebase, SiFlutter, SiDart, SiDocker,
+  SiNextdotjs, SiNestjs, SiPostgresql, SiRedis, SiPrisma, SiStripe, SiTypescript, SiTailwindcss, SiExpo
 } from "react-icons/si";
-
 import { DiMsqlServer } from "react-icons/di";
-
 import { TbBrandCSharp } from "react-icons/tb";
 
-
-// Données de vos projets
 const projects = [
-    {
-        name: "Cesi",
-        name2: "veroo",
-        description: "A full-stack food delivery platform featuring real-time order tracking, restaurant management, and user authentication. Build with React Native, Express.js, SQL Server, MongoDB, and Docker.",
-        link: "https://github.com/clementfornes13",
-        color: "from-black to-black",
-        color2: "from-[#00C1EB] to-[#00C1EB]",
-        details: "A full-stack food delivery platform featuring real-time order tracking, restaurant management, and user authentication. Built with React, Node.js, and MongoDB.",
-        tech: [
-            { name: "React Native", icon: SiReact },
-            { name: "Express.js", icon: SiExpress },
-            { name: "SQL Server", icon: DiMsqlServer },
-            { name: "MongoDB", icon: SiMongodb },
-            { name: "Docker", icon: SiDocker },
-        ],
-    },
-    {
-        name: "Easy",
-        name2: "Save",
-        description: "A backup software for Windows, macOS, and Linux. Built with C# and .NET.",
-        link: "https://github.com/clementfornes13",
-        color: "from-black to-black",
-        color2: "from-pink-500 to-purple-500",
-        details: "A backup software for Windows, macOS, and Linux. Built with C# and .NET.",
-        tech: [
-            { name: "C#", icon: TbBrandCSharp },
-            { name: ".NET", icon: SiDotnet },
-            { name: "WPF", icon: SiDotnet },
-            { name: "SQLite", icon: SiSqlite }
-        ],
-    },
-    {
-        name: "Gate",
-        name2: "Guard",
-        description: "A secure access control system for parking facilities, featuring real-time identity verification and automated gate management. Built with React Native and Firebase.",
-        link: "https://www.example.com",
-        color: "from-black to-black",
-        color2: "from-green-500 to-blue-500",
-        details: "A secure access control system for parking facilities, featuring real-time identity verification and automated gate management. Built with React Native and Firebase.",
-        tech: [
-            { name: "React Native", icon: SiReact },
-            { name: "Firebase", icon: SiFirebase },
-            { name: "Redux", icon: SiRedux },
-            { name: "TypeScript", icon: SiTypescript }
-        ],
-    },
+  {
+    name: "Kaelix",
+    emoji: "💪",
+    description: "All-in-one SaaS platform for fitness & bodybuilding coaches — web dashboard + mobile athlete app.",
+    longDescription: "A full-stack multi-tenant SaaS connecting coaches and athletes. Coaches manage clients, programs (training & nutrition), check-ins, messaging, and billing via a Next.js 16 web app. Athletes access their programs, submit weekly check-ins (weight, mood, sleep, stress), upload progress photos, and chat with their coach through an Expo/React Native mobile app. Powered by NestJS API, PostgreSQL, Redis/BullMQ queues, Clerk auth, Stripe payments, and Expo push notifications.",
+    link: null,
+    gradient: "from-violet-600 to-indigo-500",
+    tech: [
+      { name: "Next.js", icon: SiNextdotjs },
+      { name: "React Native", icon: SiReact },
+      { name: "NestJS", icon: SiNestjs },
+      { name: "PostgreSQL", icon: SiPostgresql },
+      { name: "Redis", icon: SiRedis },
+      { name: "Prisma", icon: SiPrisma },
+      { name: "Stripe", icon: SiStripe },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Expo", icon: SiExpo },
+    ],
+    highlights: ["Multi-tenant SaaS", "Web + Mobile", "Stripe billing", "Push notifications", "Real-time messaging"],
+    featured: true,
+  },
+  {
+    name: "CesiVeroo",
+    emoji: "🍕",
+    description: "Modern food delivery app connecting customers, restaurants & delivery personnel with a scalable architecture.",
+    longDescription: "A multi-role food delivery platform supporting customers, restaurants, and delivery personnel. Features a React Native cross-platform frontend, Express.js API backend, dual-database architecture (SQL Server + MongoDB), and full Docker containerization for portable deployment. Built by a team of 3 engineering students.",
+    link: "https://aymanehilmi.com/Cesiveroo",
+    gradient: "from-violet-500 to-pink-500",
+    tech: [
+      { name: "React Native", icon: SiReact },
+      { name: "Express.js", icon: SiExpress },
+      { name: "SQL Server", icon: DiMsqlServer },
+      { name: "MongoDB", icon: SiMongodb },
+      { name: "Docker", icon: SiDocker },
+    ],
+    highlights: ["Multi-role", "Dual databases", "Dockerized", "Cross-platform"],
+  },
+  {
+    name: "EasySave",
+    emoji: "💾",
+    description: "Backup application with WPF & console interfaces, encryption via CryptoSoft, and parallel execution.",
+    longDescription: "A desktop backup application evolved through 3 major versions — from a console app to a full WPF interface with remote control. Supports unlimited backup jobs, parallel/sequential execution, priority file management, CryptoSoft encryption, business software detection (auto-pause), and bilingual support (FR/EN). Logs in JSON & XML formats.",
+    link: "https://github.com/eystone/prosoft",
+    gradient: "from-blue-500 to-violet-500",
+    tech: [
+      { name: "C#", icon: TbBrandCSharp },
+      { name: ".NET", icon: SiDotnet },
+      { name: "WPF", icon: SiDotnet },
+    ],
+    highlights: ["Parallel execution", "Encryption", "Remote interface", "Bilingual"],
+  },
+  {
+    name: "Car In Out",
+    emoji: "🚗",
+    description: "Cross-platform Flutter app for registering vehicle entries & exits on site, with real-time tracking.",
+    longDescription: "A tablet-first Flutter application deployed at car park entrances to track vehicle and personnel movements in real time. Features PIN authentication, multilingual support (FR/EN), Firebase Firestore storage, Excel report generation, and Shorebird code push for OTA updates.",
+    link: "https://github.com/clementfornes13",
+    gradient: "from-cyan-500 to-violet-500",
+    tech: [
+      { name: "Flutter", icon: SiFlutter },
+      { name: "Dart", icon: SiDart },
+      { name: "Firebase", icon: SiFirebase },
+    ],
+    highlights: ["Cross-platform", "Real-time tracking", "Excel reports", "OTA updates"],
+  },
 ];
 
-// Composant Modal pour afficher les détails du projet
-const ProjectModal = ({ project, onClose }) => {
-    return (
-        <AnimatePresence>
-            {project && (
-                <motion.div
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                >
-                    <motion.div
-                        className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full p-8 relative mx-4"
-                        initial={{ scale: 0.8, opacity: 0, y: 20 }}
-                        animate={{ scale: 1, opacity: 1, y: 0 }}
-                        exit={{ scale: 0.8, opacity: 0, y: 20 }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <button
-                            onClick={onClose}
-                            className="absolute top-6 right-6 text-gray-400 hover:text-gray-800 text-3xl transition-colors"
-                        >
-                            &times;
-                        </button>
-                        <div className="space-y-6">
-                            <div>
-                                <h2 className="text-4xl font-bold mb-2">
-                                    <span className="text-gray-900">{project.name}</span>
-                                    {project.name2 && (
-                                        <span className={`bg-gradient-to-r ${project.color2} text-transparent bg-clip-text`}>
-                                            {project.name2}
-                                        </span>
-                                    )}
-                                </h2>
-                                <div className="flex flex-wrap gap-4 justify-center">
-                                    {project.tech?.map((tech, index) => (
-                                        <div key={index} className="flex flex-col items-center group/tech">
-                                            <tech.icon className="w-8 h-8 text-gray-600 group-hover/tech:text-blue-500 transition-colors" />
-                                            <span className="text-xs text-gray-500 mt-1">{tech.name}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                            <p className="text-gray-600 text-lg leading-relaxed">{project.details}</p>
-                            <div className="flex justify-end">
-                                <a
-                                    href={project.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="px-6 py-3 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-all hover:shadow-xl hover:-translate-y-0.5"
-                                >
-                                    View Project
-                                </a>
-                            </div>
-                        </div>
-                    </motion.div>
-                </motion.div>
-            )}
-        </AnimatePresence>
-    );
-};
+const ProjectModal = ({ project, onClose }) => (
+  <AnimatePresence>
+    {project && (
+      <motion.div
+        className="fixed inset-0 z-50 flex items-end md:items-center justify-center bg-black/60 backdrop-blur-md"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+      >
+        <motion.div
+          className="bg-surface-light dark:bg-surface-dark border border-neutral-200/50 dark:border-neutral-800/50 rounded-t-3xl md:rounded-3xl w-full md:max-w-xl p-8 mx-0 md:mx-4 relative overflow-hidden"
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 100, opacity: 0 }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient}`} />
+          <button onClick={onClose} className="absolute top-4 right-5 text-neutral-400 hover:text-accent text-xl transition-colors">
+            &times;
+          </button>
+          <div className="flex items-center gap-3 mb-4">
+            <span className="text-3xl">{project.emoji}</span>
+            <h3 className="text-2xl font-bold gradient-text">{project.name}</h3>
+          </div>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project.tech?.map((t, i) => (
+              <span key={i} className="inline-flex items-center gap-1.5 text-xs border border-accent/20 text-accent rounded-full px-3 py-1.5 hover:bg-accent/10 transition-colors">
+                <t.icon className="w-3.5 h-3.5" /> {t.name}
+              </span>
+            ))}
+          </div>
+          <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed mb-6">{project.longDescription}</p>
+          {project.link ? (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-white bg-accent hover:bg-accent-light px-5 py-2.5 rounded-full transition-colors shadow-lg shadow-accent/25"
+            >
+              View project
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </a>
+          ) : (
+            <span className="inline-flex items-center gap-2 text-sm text-neutral-400 border border-neutral-300 dark:border-neutral-700 px-5 py-2.5 rounded-full">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0110 0v4" />
+              </svg>
+              Private project
+            </span>
+          )}
+        </motion.div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+);
 
 const Projects = () => {
-    const { rainbowMode } = useContext(RainbowContext);
-    const [selectedProject, setSelectedProject] = useState(null);
+  const { rainbowMode } = useContext(ThemeContext);
+  const [selected, setSelected] = useState(null);
 
-    const openModal = (project) => {
-        setSelectedProject(project);
-    };
-
-    const closeModal = () => {
-        setSelectedProject(null);
-    };
-
-    return (
-        <div
-            id="projects"
-            className="min-h-screen py-20 flex flex-col items-center justify-center bg-gradient-to-b from-gray-50 to-white relative overflow-hidden"
+  return (
+    <section id="projects" className="py-32 relative">
+      <div className="max-w-6xl mx-auto px-6">
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-            <motion.div
-                className="container mx-auto px-4 sm:px-6 lg:px-8 relative"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-            >
-                <div className="text-center mb-16">
-                    <h1 className="text-5xl font-extrabold mb-4">
-                        {rainbowMode ? (
-                            <FancyText
-                                gradient={{ from: "#F858E0", to: "#77156C" }}
-                                animateTo={{ from: "#6DEDD0", to: "#7AE23A" }}
-                                animateDuration={2000}
-                            >
-                                <span className="text-transparent bg-clip-text">Projects</span>
-                            </FancyText>
-                        ) : (
-                            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-                                Projects
-                            </span>
-                        )}
-                    </h1>
-                    <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-  A collection of my recent work as a fullstack developer, combining strong technical skills with real-world results.  
-  Open to new freelance collaborations and full-time roles.
-</p>
-                </div>
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-3">
+            {rainbowMode ? (
+              <FancyText gradient={{ from: "#F858E0", to: "#77156C" }} animateTo={{ from: "#6DEDD0", to: "#7AE23A" }} animateDuration={2000}>
+                Projects
+              </FancyText>
+            ) : (
+              <>Featured <span className="gradient-text">Projects</span></>
+            )}
+          </h2>
+          <p className="text-neutral-500 dark:text-neutral-400">Recent work showcasing my skills.</p>
+        </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.map((project, index) => (
-                        <motion.div
-                            key={index}
-                            className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.1, delay: index * 0.1 }}
-                            whileHover={{ scale: 1.02 }}
-                            onClick={() => openModal(project)}
-                        >
-                            <div className="p-6 space-y-4">
-                                <h2 className="text-2xl font-bold">
-                                    <span className="text-gray-900">{project.name}</span>
-                                    {project.name2 && (
-                                        <span className={`bg-gradient-to-r ${project.color2} text-transparent bg-clip-text`}>
-                                            {project.name2}
-                                        </span>
-                                    )}
-                                </h2>
-                                <p className="text-gray-600">{project.description}</p>
-                                <div className="flex flex-wrap gap-4 justify-center">
-                                    {project.tech?.map((tech, index) => (
-                                        <div key={index} className="flex flex-col items-center group/tech">
-                                            <tech.icon className="w-8 h-8 text-gray-600 group-hover/tech:text-blue-500 transition-colors" />
-                                            <span className="text-xs text-gray-500 mt-1">{tech.name}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                                <button
-                                    // Button on bottom
-                                    className="absolute px-4 py-2 bg-blue-500 text-white rounded-full shadow hover:bg-blue-600 transition-all hover:shadow-l bottom-4 left-1/2 transform -translate-x-1/2"
->
-                                    View Details
-                                </button>
-                            </div>
-                            <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-                        </motion.div>
-                    ))}
+        <div className="space-y-6">
+          {projects.map((project, i) => (
+            <motion.div
+              key={i}
+              className="group relative rounded-3xl border border-neutral-200/50 dark:border-neutral-800/50 bg-white/50 dark:bg-white/5 backdrop-blur-sm overflow-hidden cursor-pointer"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.12 }}
+              whileHover={{ y: -6, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }}
+              onClick={() => setSelected(project)}
+            >
+              {/* Gradient hover bg */}
+              <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} opacity-0 group-hover:opacity-[0.07] transition-opacity duration-700`} />
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-2/3 h-20 bg-accent/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
+
+              <div className="relative z-10 p-8 md:p-10">
+                <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+                  {/* Left: Project info */}
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="text-2xl">{project.emoji}</span>
+                      <div>
+                        <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-white group-hover:text-accent transition-colors duration-300">
+                          {project.name}
+                        </h3>
+                        <span className="text-xs text-accent/60 font-medium uppercase tracking-wider">
+                          Project {String(i + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed mb-4 max-w-lg">
+                      {project.description}
+                    </p>
+
+                    {/* Tech pills */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tech?.map((t, j) => (
+                        <span key={j} className="inline-flex items-center gap-1 text-xs text-neutral-500 dark:text-neutral-400 border border-neutral-200/50 dark:border-neutral-800/50 rounded-full px-2.5 py-1 group-hover:border-accent/20 group-hover:text-accent transition-all duration-300">
+                          <t.icon className="w-3 h-3" /> {t.name}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Highlights */}
+                    <div className="flex flex-wrap gap-2">
+                      {project.highlights.map((h, j) => (
+                        <span key={j} className="text-[10px] px-2 py-0.5 rounded-full bg-accent/10 text-accent">
+                          {h}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Arrow button */}
+                  <div className="flex-shrink-0">
+                    <div className="w-14 h-14 rounded-full border border-neutral-200 dark:border-neutral-800 flex items-center justify-center group-hover:border-accent group-hover:bg-accent group-hover:shadow-lg group-hover:shadow-accent/30 transition-all duration-500">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-neutral-400 group-hover:text-white transition-colors -rotate-45 group-hover:rotate-0 duration-500">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-12 text-center">
-</div>
+              </div>
             </motion.div>
-            <ProjectModal project={selectedProject} onClose={closeModal} />
+          ))}
         </div>
-    );
+      </div>
+      <ProjectModal project={selected} onClose={() => setSelected(null)} />
+    </section>
+  );
 };
 
 export default Projects;
-

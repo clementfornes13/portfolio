@@ -1,7 +1,7 @@
 'use client';
-import React, { useContext } from "react";
+import React, { useState, useEffect } from "react";
 
-import RainbowProvider, { RainbowContext } from "./RainbowContext";
+import ThemeProvider, { useTheme } from "./ThemeContext";
 import Hero from "./components/Hero";
 import AboutMe from "./components/AboutMe";
 import Skills from "./components/Skills";
@@ -9,34 +9,59 @@ import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import BackgroundLayer from "./components/BackgroundLayer";
+import Navbar from "./components/Navbar";
+import CustomCursor from "./components/CustomCursor";
 import SplashCursor from "./components/SplashCursor";
-import FreelanceServices from "./components/FreelanceServices";
-import TarifSection from "./components/TarifSection";
+import PageLoader from "./components/PageLoader";
+import Toast from "./components/easter-eggs/Toast";
+import Confetti from "./components/easter-eggs/Confetti";
+import MatrixRain from "./components/easter-eggs/MatrixRain";
+import NightSky from "./components/easter-eggs/NightSky";
+import BounceEffect from "./components/easter-eggs/BounceEffect";
+
 function AppContent() {
-  const { rainbowMode } = useContext(RainbowContext);
+  const { rainbowMode, activeEasterEggs, toastMessage } = useTheme();
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoaded(true), 2400);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="min-h-screen relative">
-      {rainbowMode && <SplashCursor />}
-      <BackgroundLayer />
-      <Hero />
-      <AboutMe />
-      <Skills />
-      <Projects />
-      <Experience />
-      <FreelanceServices />
-      <Contact />
-      <TarifSection />
-      <Footer />
-    </div>
+    <>
+      <PageLoader onComplete={() => setLoaded(true)} />
+      {loaded && (
+        <div className="min-h-screen bg-surface-light dark:bg-surface-dark text-neutral-900 dark:text-white transition-colors duration-300">
+          <CustomCursor />
+          {rainbowMode && <SplashCursor />}
+          <Navbar />
+          <Hero />
+          <AboutMe />
+          <Skills />
+          <Projects />
+          <Experience />
+          <Certifications />
+          <Contact />
+          <Footer />
+
+          {/* Easter egg overlays */}
+          {toastMessage && <Toast message={toastMessage} />}
+          {activeEasterEggs.has("confetti") && <Confetti />}
+          {activeEasterEggs.has("matrix") && <MatrixRain />}
+          {activeEasterEggs.has("nightsky") && <NightSky />}
+          {activeEasterEggs.has("bounce") && <BounceEffect />}
+        </div>
+      )}
+    </>
   );
 }
 
 const App = () => {
   return (
-    <RainbowProvider>
+    <ThemeProvider>
       <AppContent />
-    </RainbowProvider>
+    </ThemeProvider>
   );
 };
 

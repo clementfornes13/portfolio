@@ -3,131 +3,161 @@ import { motion } from "framer-motion";
 import {
   FaCode, FaReact, FaServer, FaMobileAlt, FaTools, FaCloud,
 } from "react-icons/fa";
-import { RainbowContext } from "../RainbowContext";
+import {
+  SiTypescript, SiPython, SiDart, SiJavascript,
+  SiReact as SiReactIcon, SiNextdotjs, SiTailwindcss,
+  SiNodedotjs, SiExpress, SiPostgresql, SiMongodb, SiGraphql,
+  SiDocker, SiGithubactions, SiGit, SiFlutter,
+} from "react-icons/si";
+import { ThemeContext } from "../ThemeContext";
 import FancyText from "./FancyText";
 
 const skills = [
   {
     title: "Software Development",
-    description: "Experienced in functional and OOP paradigms: Dart, Python, JavaScript, TypeScript.",
-    icon: <FaCode className="text-white text-5xl mb-4" />,
-    highlight: "Software",
-    color: "from-pink-500 to-purple-500"
+    description: "Functional and OOP paradigms",
+    icon: FaCode,
+    tagline: "The foundation",
+    techs: [
+      { icon: SiTypescript, name: "TypeScript" },
+      { icon: SiJavascript, name: "JavaScript" },
+      { icon: SiPython, name: "Python" },
+      { icon: SiDart, name: "Dart" },
+    ],
+    span: "md:col-span-2",
   },
   {
-    title: "Frontend Dev",
-    description: "Expert in UI/UX design, React.js, Next.js, TailwindCSS & modern web technologies.",
-    icon: <FaReact className="text-blue-400 text-5xl mb-4" />,
-    highlight: "Frontend Dev",
-    color: "from-blue-500 to-indigo-500"
+    title: "Frontend",
+    description: "Modern web technologies",
+    icon: FaReact,
+    tagline: "My daily driver",
+    techs: [
+      { icon: SiReactIcon, name: "React" },
+      { icon: SiNextdotjs, name: "Next.js" },
+      { icon: SiTailwindcss, name: "Tailwind" },
+    ],
+    span: "",
   },
   {
     title: "Backend & APIs",
-    description: "Building scalable backends with Node.js, Express.js, PostgreSQL, MongoDB & GraphQL.",
-    icon: <FaServer className="text-green-400 text-5xl mb-4" />,
-    highlight: "Backend & APIs",
-    color: "from-green-500 to-teal-500"
+    description: "Server-side & databases",
+    icon: FaServer,
+    tagline: "Where the magic happens",
+    techs: [
+      { icon: SiNodedotjs, name: "Node.js" },
+      { icon: SiExpress, name: "Express" },
+      { icon: SiPostgresql, name: "PostgreSQL" },
+      { icon: SiMongodb, name: "MongoDB" },
+      { icon: SiGraphql, name: "GraphQL" },
+    ],
+    span: "md:col-span-2",
   },
   {
-    title: "DevOps & Automation",
-    description: "Containerizing apps with Docker & automating deployments with CI/CD.",
-    icon: <FaCloud className="text-yellow-400 text-5xl mb-4" />,
-    highlight: "DevOps",
-    color: "from-yellow-500 to-orange-500"
+    title: "DevOps & Tools",
+    description: "CI/CD & automation",
+    icon: FaCloud,
+    tagline: "It works on my machine™",
+    techs: [
+      { icon: SiDocker, name: "Docker" },
+      { icon: SiGit, name: "Git" },
+      { icon: SiGithubactions, name: "Actions" },
+    ],
+    span: "",
   },
   {
-    title: "Mobile Development",
-    description: "Cross-platform mobile development using Flutter & React Native.",
-    icon: <FaMobileAlt className="text-orange-400 text-5xl mb-4" />,
-    highlight: "Mobile Development",
-    color: "from-orange-500 to-red-500"
+    title: "Mobile",
+    description: "Cross-platform apps",
+    icon: FaMobileAlt,
+    tagline: "Apps in your pocket",
+    techs: [
+      { icon: SiFlutter, name: "Flutter" },
+      { icon: SiReactIcon, name: "RN" },
+    ],
+    span: "",
   },
-  {
-    title: "Tools & CI/CD",
-    description: "Version control, Git, GitHub Actions, and efficient CI/CD workflows.",
-    icon: <FaTools className="text-gray-300 text-5xl mb-4" />,
-    highlight: "Tools & CI/CD",
-    color: "from-gray-500 to-gray-700"
-  },
-  {
-    title: "Freelance Services",
-    description: "Available for short-term or long-term freelance projects. Let's build something great together.",
-    icon: <FaTools className="text-pink-400 text-5xl mb-4" />,
-    highlight: "Freelance",
-    color: "from-pink-500 to-red-500"
-  }
 ];
 
 const Skills = () => {
-  const { rainbowMode } = useContext(RainbowContext);
+  const { rainbowMode } = useContext(ThemeContext);
 
   return (
-    <div id="skills" className="relative z-10 py-20 bg-white/5 backdrop-blur-sm">
+    <section id="skills" className="py-32 relative">
+      <div className="absolute inset-0 dot-grid opacity-40 dark:opacity-20 pointer-events-none" />
 
-      <motion.div
-        className="container max-w-7xl mx-auto px-6 md:px-10 relative"
-        initial={{ opacity: 0, y: 30, scale: 0.95 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <h1 className="text-4xl font-extrabold text-center mb-6">
-          {rainbowMode ? (
-            <FancyText
-              gradient={{ from: "#F858E0", to: "#77156C" }}
-              animateTo={{ from: "#6DEDD0", to: "#7AE23A" }}
-              animateDuration={2000}
-            >
-              <span className="text-transparent bg-clip-text">My Skills & Tech Stack</span>
-            </FancyText>
-          ) : (
-            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-              My Skills & Tech Stack
-            </span>
-          )}
-        </h1>
-
-        <p className="text-center text-gray-300 mt-2 max-w-2xl mx-auto">
-          I work across the stack to build fast, scalable, and user-centric solutions. Whether you're hiring or looking for a freelance partner, here's what I bring to the table.
-        </p>
-
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          className="mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          {skills.map((skill, index) => (
-            <motion.div
-              key={index}
-              className="relative flex flex-col items-center p-6 rounded-xl shadow-xl border border-gray-700 text-center bg-white/10"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
-              {skill.icon}
-
-              {rainbowMode ? (
-                <FancyText
-                  gradient={{ from: "#F858E0", to: "#77156C" }}
-                  animateTo={{ from: "#6DEDD0", to: "#7AE23A" }}
-                  animateDuration={2000}
-                >
-                  <h2 className="text-2xl font-semibold mt-2">
-                    {skill.highlight} {skill.title.replace(skill.highlight, "")}
-                  </h2>
-                </FancyText>
-              ) : (
-                <h2 className={`text-2xl font-semibold mt-2 bg-gradient-to-r ${skill.color} text-transparent bg-clip-text`}>
-                  {skill.highlight} {skill.title.replace(skill.highlight, "")}
-                </h2>
-              )}
-
-              <p className="mt-3 text-gray-300">{skill.description}</p>
-              <div className={`absolute inset-0 rounded-xl bg-gradient-to-br ${skill.color} opacity-20 blur-2xl pointer-events-none`}></div>
-            </motion.div>
-          ))}
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-3">
+            {rainbowMode ? (
+              <FancyText gradient={{ from: "#F858E0", to: "#77156C" }} animateTo={{ from: "#6DEDD0", to: "#7AE23A" }} animateDuration={2000}>
+                Skills
+              </FancyText>
+            ) : (
+              <>My <span className="gradient-text">Skills</span></>
+            )}
+          </h2>
+          <p className="text-neutral-500 dark:text-neutral-400">Technologies I work with daily.</p>
         </motion.div>
-      </motion.div>
-    </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {skills.map((skill, i) => {
+            const Icon = skill.icon;
+            return (
+              <motion.div
+                key={i}
+                className={`group relative rounded-2xl border border-neutral-200/50 dark:border-neutral-800/50 bg-white/50 dark:bg-white/5 backdrop-blur-sm p-6 transition-all duration-500 overflow-hidden ${skill.span}`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                whileHover={{ y: -6, transition: { duration: 0.3, ease: "easeOut" } }}
+              >
+                {/* Hover effects */}
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/8 via-pink-500/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-16 bg-accent/15 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
+
+                <div className="relative z-10">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent group-hover:shadow-lg group-hover:shadow-accent/30 transition-all duration-500">
+                      <Icon className="text-lg text-accent group-hover:text-white transition-colors duration-500" />
+                    </div>
+                    <span className="text-[10px] text-accent/50 group-hover:text-accent italic transition-colors">
+                      {skill.tagline}
+                    </span>
+                  </div>
+
+                  <h3 className="font-semibold text-neutral-900 dark:text-white mb-1 group-hover:text-accent transition-colors duration-300">
+                    {skill.title}
+                  </h3>
+                  <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-4">
+                    {skill.description}
+                  </p>
+
+                  {/* Tech icons row */}
+                  <div className="flex flex-wrap gap-2">
+                    {skill.techs.map((tech, j) => (
+                      <motion.div
+                        key={j}
+                        className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-800/50 text-[11px] text-neutral-600 dark:text-neutral-400 group-hover:bg-accent/10 group-hover:text-accent transition-all duration-300"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                      >
+                        <tech.icon className="w-3 h-3" />
+                        {tech.name}
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   );
 };
 
