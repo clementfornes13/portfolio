@@ -50,38 +50,38 @@ const ThemeProvider = ({ children }) => {
 
   // Easter eggs — type these words anywhere on the page
   useEasterEgg({
-    // "rainbow" → activates psychedelic fluid cursor mode
+    // "rainbow" → psychedelic fluid cursor mode
     rainbow: () => {
       setRainbowMode((prev) => !prev);
-      showToast(rainbowMode ? "Rainbow mode off 🌈" : "Rainbow mode activated! 🌈✨");
+      showToast(rainbowMode ? "Rainbow mode off" : "Rainbow mode activated!");
     },
-    // "clement" → toggles fun facts in About section
-    clement: () => {
-      setShowFunFacts((prev) => !prev);
-      showToast("Fun facts unlocked! 🤫");
-    },
-    // "matrix" → Matrix digital rain overlay
+    // "matrix" → Matrix digital rain
     matrix: () => {
-      showToast("Wake up, Neo... 🐇");
+      showToast("Wake up, Neo...");
       triggerEasterEgg("matrix", 8000);
     },
-    // "stars" → beautiful night sky with shooting stars
+    // "stars" → night sky with shooting stars
     stars: () => {
-      showToast("Look up ✨🌠");
+      showToast("Look up...");
       triggerEasterEgg("nightsky", 10000);
     },
-    // "hire" → confetti celebration
+    // "hire" → confetti
     hire: () => {
-      showToast("That's the spirit! Let's talk! 🎉🚀");
+      showToast("Let's talk!");
       triggerEasterEgg("confetti", 5000);
     },
-    // "42" → hitchhiker's guide reference
-    "42": () => showToast("The answer to life, the universe, and everything. 🌌"),
-    // "music" → site elements bounce to a beat
-    music: () => {
-      showToast("Feel the rhythm! 🎵");
-      triggerEasterEgg("bounce", 6000);
+    // "glitch" → glitch distortion
+    glitch: () => {
+      showToast("R3AL1TY.exe has stopped working");
+      triggerEasterEgg("glitch", 5000);
     },
+    // "gravity" → everything falls
+    gravity: () => {
+      showToast("Oops...");
+      triggerEasterEgg("gravity", 4000);
+    },
+    // "42" → hitchhiker's guide
+    "42": () => showToast("The answer to life, the universe, and everything."),
   });
 
   return (
