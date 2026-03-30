@@ -115,9 +115,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() =>
-                  document
-                    .getElementById("projects")
-                    ?.scrollIntoView({ behavior: "smooth" })
+                  document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
                 }
               >
                 <span className="relative z-10">View my work</span>
@@ -133,9 +131,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() =>
-                  document
-                    .getElementById("contact")
-                    ?.scrollIntoView({ behavior: "smooth" })
+                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
                 }
               >
                 Get in touch
@@ -170,21 +166,29 @@ const Hero = () => {
             style={{ y: imageY, scale: imageScale, opacity: imageOpacity }}
           >
             <motion.div
-              className="relative group"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
+              className="relative"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
-              {/* Gradient border */}
-              <div className="absolute -inset-[1.5px] rounded-2xl bg-gradient-to-b from-accent/60 via-accent/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
-              {/* Subtle glow behind */}
-              <div className="absolute -inset-3 rounded-3xl bg-accent/5 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              {/* Photo */}
-              <img
-                src={profileImage}
-                alt="Clement Fornes"
-                className="relative w-72 md:w-80 lg:w-[22rem] object-cover rounded-2xl"
-              />
+              {/* Animated gradient border wrapper */}
+              <div className="relative p-[2px] rounded-[1.75rem] overflow-hidden">
+                {/* Spinning gradient border */}
+                <div
+                  className="absolute inset-[-50%] animate-spin-slow"
+                  style={{
+                    background: "conic-gradient(from 0deg, #7c3aed, #ec4899, #a78bfa, #7c3aed)",
+                  }}
+                />
+                {/* Inner container to mask the spinning gradient */}
+                <div className="relative rounded-[1.65rem] overflow-hidden bg-surface-light dark:bg-surface-dark">
+                  <img
+                    src={profileImage}
+                    alt="Clement Fornes"
+                    className="relative w-64 md:w-72 lg:w-80 object-cover"
+                  />
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -202,9 +206,7 @@ const Hero = () => {
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
           onClick={() =>
-            document
-              .getElementById("about-me")
-              ?.scrollIntoView({ behavior: "smooth" })
+            document.getElementById("about-me")?.scrollIntoView({ behavior: "smooth" })
           }
         >
           <span className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 group-hover:text-accent transition-colors">
